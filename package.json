@@ -1,0 +1,29 @@
+{
+  "name": "norpc",
+  "version": "0.9.1",
+  "dependencies": {
+    "serve-static": "^=1.15.0"
+  },
+  "description": "Seamless RPC server & client with autocomplete and dynamically generated stub scripts to safely expose back-end functions to the front-end!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=4"
+  },
+  "keywords": [
+    "rpc",
+    "remote","procedure","call",
+    "sockets.io",
+    "websocket"
+  ],
+  "author": "emmyarty",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emmyarty/norpc"
+  },
+  "license": "MIT",
+  "funding": "https://www.buymeacoffee.com/emmyarty"
+}

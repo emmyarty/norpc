@@ -71,7 +71,7 @@ rpc.doubled = (val) => {
 }
 
 rpc.reply = async (name) => {
-    return 'Hi' + name + '!'
+    return 'Hi ' + name + '!'
 }
 
 module.exports = rpc

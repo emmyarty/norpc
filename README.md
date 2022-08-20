@@ -28,7 +28,7 @@ user.changePassword(newPassword)
   .then(response => console.log(response))
 ```
 ## Using Node & Express
-If you are using this with Node & Express, getting this up and running is easy as can be. If you've used express-generator, place this beneath the server declaration within  then under **/bin/www**:
+If you are using this with Node & Express, getting this up and running is easy as can be. If you've used express-generator, place this beneath the server declaration within **/bin/www**:
 ```
 // ./bin/www
 

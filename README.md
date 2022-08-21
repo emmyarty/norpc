@@ -6,7 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/emmyarty/norpc/blob/main/LICENSE)
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](#)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](#)
-[![Maintainer](https://img.shields.io/badge/maintainer-theMaintainer-blue)](#)
+[![Maintainer](https://img.shields.io/badge/maintainer-emmyarty-blue)](#)
 # noRPC
 Seamless RPC server &amp; client with autocomplete and dynamically generated stub scripts to safely expose back-end functions to the front-end!
 Powered by Sockets.io, with no external dependencies.

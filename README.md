@@ -89,4 +89,4 @@ let myNumberTimeTwo = await example.doubled(myNumber);
 console.log(myNumberTimeTwo) // Outputs 10
 ```
 You might notice you have full access to autocomplete as you call the functions! It certainly makes life easier, in my opinion; Sockets.io glues binds this all together using **emit**s, and that **rpc.express(server)** we inserted earlier deals with ensuring JS files are available on the front-end which mirror the names and parameters of the back-end calls.
-That's how this works without ever 'actually* giving access to your back-end files to the client.
+That's how this works without ever *actually* giving access to your back-end files to the client.

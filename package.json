@@ -1,8 +1,9 @@
 {
   "name": "norpc",
-  "version": "0.9.1",
+  "version": "0.9.4",
   "dependencies": {
-    "serve-static": "^=1.15.0"
+    "serve-static": "^=1.15.0",
+    "socket.io": "^4.5.0"
   },
   "description": "Seamless RPC server & client with autocomplete and dynamically generated stub scripts to safely expose back-end functions to the front-end!",
   "main": "index.js",

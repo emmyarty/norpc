@@ -3,7 +3,7 @@
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/emmyarty/norpc)
 [![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/norpc)
 
-[![StackBlitz](https://img.shields.io/badge/Live%20Demo-Click%20Here!-orange)](https://stackblitz.com/edit/node-hbni85?file=index.js)
+[![StackBlitz](https://img.shields.io/badge/Live%20Demo-Click%20Here!-orange)](https://stackblitz.com/edit/norpc?file=index.js)
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/emmyarty/norpc/blob/main/LICENSE)
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](#)

@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const static = require('serve-static')
 
-function getArgs(func) {
+function getArgs (func) {
     const ARROW = true;
     const FUNC_ARGS = ARROW ? /^(function)?\s*[^\(]*\(\s*([^\)]*)\)/m : /^(function)\s*[^\(]*\(\s*([^\)]*)\)/m;
     const FUNC_ARG_SPLIT = /,/;
@@ -19,6 +19,21 @@ function getArgs(func) {
         .filter(String);
 }
 
+function mapCookies (cookie) {
+    if (typeof cookie !== 'string') return {}
+    let cookieArray = cookie.split(';')
+    let cookieObj = {}
+    cookieArray.forEach(item => {
+        try {
+            let _item = item.split('=')
+            let key = decodeURIComponent(_item[0].trim())
+            let val = _item[1] ? decodeURIComponent(_item[1].trim()) : null
+            cookieObj[key] = val
+        } catch (_) { console.log('Error decoding cookie: ' + item) }
+    })
+    return cookieObj
+}
+
 const handlers = (() => {
     let dir = path.join(process.cwd(), 'rpc')
     let modules = fs.existsSync(dir) ? fs.readdirSync(dir, (err, files) => err ? files : []) : []
@@ -31,7 +46,7 @@ const handlers = (() => {
             arr.push({
                 name: `${rname}.${func}`,
                 params: getArgs(funcs[func]),
-                run: async (payload, callback) => { let outcome = await funcs[func](...payload); if(callback && outcome !== undefined) callback(outcome) }
+                run: async (payload, callback) => { let outcome = await funcs[func](...payload?.params, COOKIES = mapCookies(payload?.cookies)); if(callback && outcome !== undefined) callback(outcome) }
             })
         })
     })
@@ -58,7 +73,7 @@ const interface = (fname, window = true) => {
         ],
         inner: handlers.map(route => {
             if (!route.name.startsWith(rpcn + '.', '')) return null
-            return `functions.${route.name.replace(rpcn + '.', '')} = (${route.params.join(', ')}) => new Promise( resolver => { socket.emit('${route.name}', [${route.params.join(', ')}], response => resolver(response) ) });`
+            return `functions.${route.name.replace(rpcn + '.', '')} = (${route.params.join(', ')}) => new Promise( resolver => { socket.emit('${route.name}', {cookies: document.cookie, params:[${route.params.join(', ')}]}, response => resolver(response) ) });`
         }).filter(item => item !== null),
         end: [
             window ? `window.rpc = window.rpc ? {...window.rpc, ${rpcn}: functions} : {${rpcn}: functions}` : null,

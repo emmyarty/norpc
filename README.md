@@ -3,7 +3,7 @@
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/emmyarty/norpc)
 [![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/norpc)
 
-[![StackBlitz](https://img.shields.io/badge/Live%20Demo-Click%20Here-blue)](https://stackblitz.com/edit/node-hbni85?file=index.js)
+[![StackBlitz](https://img.shields.io/badge/Live%20Demo-Click%20Here!-orange)](https://stackblitz.com/edit/node-hbni85?file=index.js)
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/emmyarty/norpc/blob/main/LICENSE)
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](#)
@@ -58,10 +58,15 @@ Okay, so now that you're set up, let's go ahead and actually use the library.
 
 Create a folder called **rpc** in your current working directory (aka the 'app root' folder, typically housing **package.json**), and create a JS file here.
 #### ⚠️ FILENAMES WITHIN THE RPC FOLDER MUST BE BOTH URL-SAFE AND VALID JS VARIABLE NAMES
-Each JS file here will become your own individual RPC library and the name of the file will become its library name.
+Each JS file here will become your own individual RPC library and the name of the file will become its library name. You can refer to pre-parsed cookies within these functions by accessing COOKIES. No support for middleware as such (cautious about convoluting the library), but you can deal with authentication within a guard clause to achieve the same goal for the most part.
 Now we create the functions we want to expose!
 ```
 // ./rpc/example.js
+
+var auth = (cookies) => {
+    if (cookies?.jwt === 'madeuptokenabc123') return true
+    return false
+}
 
 var rpc = {}
 
@@ -73,8 +78,13 @@ rpc.doubled = (val) => {
     return val * 2
 }
 
-rpc.reply = async (name) => {
+rpc.reply = (name) => {
     return 'Hi ' + name + '!'
+}
+
+rpc.chickens = async () => {
+    if (!auth(COOKIES)) return 'Nobody here but us chickens.'
+    return 'The chickens are a lie.'
 }
 
 module.exports = rpc
